@@ -97,6 +97,7 @@ func SaveData():
 	print("SAVING GAME")
 	var newSave = gameSaveData.new()
 	#----------Save Player Data--------------#
+	
 	var playerDict = {"Position": $Level/Player.position, "Velocity": $Level/Player._velocity, "SpriteScale": $Level/Player/Sprite.scale.x} 
 	newSave.playerDict[$Level/Player.get_path()] = playerDict
 
@@ -124,6 +125,7 @@ func SaveData():
 		newSave.coinDict.append(coinChunkPath) 
 
 	#----------Save Enemy Data--------------#
+
 	newSave.enemyDict["Children"] = $Level/Enemies.get_child_count()
 	var enemyArr = []
 	for enemy in $Level/Enemies.get_children():
@@ -138,6 +140,7 @@ func SaveData():
 	newSave.enemyDict["Enemies"] = enemyArr
 		
 	#----------Save Moving Platform  Data--------------#
+
 	var platform = NodePath("Platforms/Platform1")
 	var platformDictionary = {"Position": $Level/Platforms/Platform1/AnimationPlayer.current_animation_position}
 	newSave.platformDict.append(platformDictionary)
@@ -147,7 +150,7 @@ func SaveData():
 	newSave.platformDict.append(platformDictionary)
 	#to be removed
 	saveArray.append(newSave)
-	ResourceSaver.save("res://savedScene.tres", newSave)
+	ResourceSaver.save("res://savedScene.tich", newSave)
 
 	pass
 
@@ -165,7 +168,7 @@ func AddDummyNodeRecursevly(parent, height):
 func LoadData():
 	isLoading = true
 	print("LOADING GAME")
-	var loadGameData = load("res://savedScene.tres")
+	var loadGameData = load("res://savedScene.tich")
 	
 	#----------Load Enemies Data--------------#
 	
