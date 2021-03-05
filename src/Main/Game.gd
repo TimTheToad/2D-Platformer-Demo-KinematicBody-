@@ -18,9 +18,9 @@ func _init():
 
 func _ready():
 	
-	TichProfiler.connect("_save", self, "SaveData")
-	TichProfiler.connect("_load", self, "LoadData")
-	
+#	TichProfiler.connect("_save", self, "SaveData")
+#	TichProfiler.connect("_load", self, "LoadData")
+#
 
 	pass
 
@@ -40,11 +40,14 @@ func CreateCoin(parent, coindDict):
 	
 	var coinScene = load("res://src/Objects/Coin.tscn")
 	var coin = coinScene.instance()
-	
+	var animPlayer = coin.find_node("AnimationPlayer")
 	parent.add_child(coin)
 	
 	coin.position = coindDict["Position"]
 	coin.name = coindDict["Name"]
+	animPlayer.current_animation = coindDict["Animation"]
+	animPlayer.play(coindDict["Animation"])
+	animPlayer.seek(coindDict["AnimPosition"])
 	pass
 	
 func SpawnCoin(parent, count):
@@ -97,10 +100,29 @@ func SaveData():
 	print("SAVING GAME")
 	var newSave = gameSaveData.new()
 	#----------Save Player Data--------------#
-	var playerDict = {"Position": $Level/Player.position, "Velocity": $Level/Player._velocity, "SpriteScale": $Level/Player/Sprite.scale.x} 
-	newSave.playerDict[$Level/Player.get_path()] = playerDict
+	var player = $Level/Player
+	
+	var playerDict = {
+		"Position": player.position, 
+		"Velocity": player._velocity, 
+		"SpriteScale": $Level/Player/Sprite.scale.x
+		} 
+	newSave.playerDict[player.get_path()] = playerDict
 
+	#----------Save Bullet Data--------------#
+	var playerGun = $Level/Player/Sprite/Gun
+	var gunChildCount = $Level/Player/Sprite/Gun.get_child_count()
+	if(gunChildCount > 2):
+		var bulletArray = []
+		for i in range(2, gunChildCount):
+			var bulletDict = {}
+			bulletDict = {
+				"Velocity" : playerGun.get_child(i).linear_velocity,
+				"Position" : playerGun.get_child(i).global_position
+			}
+			bulletArray.append(bulletDict)
 
+		newSave.playerDict["Bullets"] = bulletArray
 	#----------Save Coin Data--------------#
 
 	var iterator = 0
@@ -113,9 +135,11 @@ func SaveData():
 
 		for coin in coinChunk.get_children():
 			var coinsDict = {}
-			
+			var animPlayer = coin.find_node("AnimationPlayer")
 			coinsDict["Position"] =  coin.position
 			coinsDict["Name"] =  coin.name
+			coinsDict["AnimPosition"] =  animPlayer.current_animation_position
+			coinsDict["Animation"] =  animPlayer.current_animation
 			dict.append(coinsDict)
 
 		coinChunkDict["coins"] = dict
@@ -137,7 +161,7 @@ func SaveData():
 		enemyArr.append(enemyDictionary)
 	newSave.enemyDict["Enemies"] = enemyArr
 		
-	#----------Save Moving Platform  Data--------------#
+	#----------Save Moving Platform Data--------------#
 	var platform = NodePath("Platforms/Platform1")
 	var platformDictionary = {"Position": $Level/Platforms/Platform1/AnimationPlayer.current_animation_position}
 	newSave.platformDict.append(platformDictionary)
@@ -145,7 +169,11 @@ func SaveData():
 	platform = NodePath("Platforms/Platform2")
 	platformDictionary = {"Position": $Level/Platforms/Platform2/AnimationPlayer.current_animation_position}
 	newSave.platformDict.append(platformDictionary)
-	#to be removed
+	
+	
+	#----------Save Music Data--------------#
+	newSave.musicDict = {"Path" : $Level/Music.get_path(), "Position" : $Level/Music.get_playback_position()}
+
 	saveArray.append(newSave)
 	ResourceSaver.save("res://savedScene.tres", newSave)
 
@@ -189,18 +217,34 @@ func LoadData():
 			animPlayer.current_animation = enemyInLoadArr[j]["Animation"]
 			animPlayer.play(enemyInLoadArr[j]["Animation"])
 			animPlayer.seek(enemyInLoadArr[j]["AnimPosition"])
-#			animPlayer.advance(enemyInLoadArr[j]["AnimPosition"])
 			enemy.position = enemyInLoadArr[j]["Position"]
 			enemy._velocity = enemyInLoadArr[j]["Velocity"]
 
-	
 
 	#----------Load Player Data--------------#
-	
-	var playerDict = loadGameData.playerDict[$Level/Player.get_path()]
-	$Level/Player.position = playerDict["Position"] # bug here! when platform moves up. Collision is not detected.
-	$Level/Player._velocity = playerDict["Velocity"]
+	var player = $Level/Player
+	var playerDict = loadGameData.playerDict[player.get_path()]
+	player.position = playerDict["Position"] # bug here! when platform moves up. Collision is not detected.
+	player._velocity = playerDict["Velocity"]
 	$Level/Player/Sprite.scale.x = playerDict["SpriteScale"]
+	
+	#----------Load Bullet Data--------------#
+	var playerGun = $Level/Player/Sprite/Gun
+	var bulletArray = loadGameData.playerDict["Bullets"]
+	var gunChildCount =  playerGun.get_child_count()
+	
+	if(gunChildCount > 2): #Remove existing bullets
+		for i in range(2, gunChildCount):
+			if(playerGun.get_child(i)):
+				playerGun.get_child(i).free()
+	
+	for i in range(0, bulletArray.size()): # Add new bullets
+		var bulletScene = load("res://src/Objects/Bullet.tscn")
+		var bullet = bulletScene.instance();
+		bullet.set_as_toplevel(true)
+		bullet.global_position = bulletArray[i]["Position"]
+		bullet.linear_velocity = bulletArray[i]["Velocity"]
+		playerGun.add_child(bullet)
 	
 	
 	#----------Load Moving Platform Data--------------#
@@ -248,7 +292,11 @@ func LoadData():
 				var coinName = coinsInChunk[j].name
 				if not namesInLoad.has(coinName):
 					coinChunk.get_node(coinName).free()
-				
+		
+		#----------Load Music Data--------------#
+		
+		var musicNode = get_node(loadGameData.musicDict["Path"])
+		musicNode.play(loadGameData.musicDict["Position"])
 	pass
 
 func VerifySavedData():

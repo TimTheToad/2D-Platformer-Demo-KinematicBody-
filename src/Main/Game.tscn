@@ -7,13 +7,11 @@
 
 [node name="Game" type="Node"]
 pause_mode = 2
-physics_process = true
 script = ExtResource( 2 )
 
 [node name="Level" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="Level" instance=ExtResource( 4 )]
-physics_process = true
 position = Vector2( 90, 546 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]

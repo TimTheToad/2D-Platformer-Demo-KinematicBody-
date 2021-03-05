@@ -6,6 +6,7 @@ export(Dictionary) var playerDict
 export(Array) var coinDict
 export(Dictionary) var enemyDict
 export(Array) var platformDict
+export(Dictionary) var musicDict
 
 
 # Called when the node enters the scene tree for the first time.

@@ -16,9 +16,7 @@ func shoot(direction = 1):
 	if not timer.is_stopped():
 		return false
 	var bullet = Bullet.instance()
-	print("Bullet global Pos: ", bullet.global_position)
 	bullet.global_position = global_position
-	print("Gun global Pos: ", global_position)
 	bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0)
 
 	bullet.set_as_toplevel(true)
