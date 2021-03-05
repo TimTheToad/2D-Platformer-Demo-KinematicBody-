@@ -16,6 +16,7 @@ onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 
 var group = null
+var coin = null
 
 # This function is called when the scene enters the scene tree.
 # We can initialize variables here.
@@ -63,8 +64,13 @@ func _physics_process(_delta):
 
 
 func destroy():
-	if(group != null && _state != State.DEAD):
-		group.destroy()
+	if(_state != State.DEAD):
+		if(group != null):
+			group.destroy()
+
+		if(has_node("Coin")):
+			get_node("Coin").pickup()
+		
 	_state = State.DEAD
 	_velocity = Vector2.ZERO
 
