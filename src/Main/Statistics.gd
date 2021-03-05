@@ -5,8 +5,8 @@ extends Node
 # var a = 2
 # var b = "text"
 
-var _coinScore;
-var _enemyScore;
+var _coinScore = 0;
+var _enemyScore = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +15,9 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if Input.is_action_just_pressed("Show_Score"):
-		print("Highest coins catched: ", _coinScore)
-		print("Highest enemies killed: ", _enemyScore)
+#	if Input.is_action_just_pressed("Show_Score"):
+#		print("Highest coins catched: ", _coinScore)
+#		print("Highest enemies killed: ", _enemyScore)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

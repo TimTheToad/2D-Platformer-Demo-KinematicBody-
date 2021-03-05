@@ -5,278 +5,260 @@
 [resource]
 script = ExtResource( 1 )
 playerDict = {
-"Bullets": [ {
-"Position": Vector2( 252.923, 556.38 ),
-"Velocity": Vector2( 490.091, 178.359 )
-} ],
-NodePath("/root/Game/Level/Player"): {
-"Position": Vector2( 140, 549.998 ),
+"Bullets": [  ],
+"Player": {
+"Position": Vector2( 333.821, 581.998 ),
 "SpriteScale": 1.0,
 "Velocity": Vector2( 0, 15 )
 }
 }
 coinDict = [ {
-NodePath("/root/Game/Level/Coins/CoinsArc"): {
-"children": 3,
-"coins": [ {
-"AnimPosition": 1.36828,
-"Animation": "spinning",
-"Name": "Coin",
-"Position": Vector2( -14.7314, 29.9809 )
-}, {
-"AnimPosition": 1.36828,
-"Animation": "spinning",
-"Name": "Coin2",
-"Position": Vector2( 0.0855715, 0.070923 )
-}, {
-"AnimPosition": 1.36828,
-"Animation": "spinning",
-"Name": "Coin3",
-"Position": Vector2( 31.2736, -17.854 )
-} ]
+"CoinsArc": {
+"children": 0,
+"coins": [  ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsVertical"): {
+"CoinsVertical": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -0.0551455, 15.9351 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( -0.0551455, -0.0649415 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -0.0551455, -16.065 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsVertical2"): {
+"CoinsVertical2": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -0.0551455, 15.9351 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( -0.0551455, -0.0649415 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -0.0551455, -16.065 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsSquare"): {
+"CoinsSquare": {
 "children": 4,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin4",
 "Position": Vector2( 16, 16 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsSquare2"): {
+"CoinsSquare2": {
 "children": 4,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin4",
 "Position": Vector2( 16, 16 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsSquare3"): {
+"CoinsSquare3": {
 "children": 4,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin4",
 "Position": Vector2( 16, 16 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsSquare4"): {
+"CoinsSquare4": {
 "children": 4,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin4",
 "Position": Vector2( 16, 16 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsHorizontal"): {
+"CoinsHorizontal": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( 16, 0 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsHorizontal2"): {
+"CoinsHorizontal2": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( 16, 0 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsHorizontal3"): {
+"CoinsHorizontal3": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( 16, 0 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsHorizontal4"): {
+"CoinsHorizontal4": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( 16, 0 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinsHorizontal5"): {
+"CoinsHorizontal5": {
 "children": 3,
 "coins": [ {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin2",
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 1.36828,
+"AnimPosition": 0.0989227,
 "Animation": "spinning",
 "Name": "Coin3",
 "Position": Vector2( 16, 0 )
 } ]
 }
 }, {
-NodePath("/root/Game/Level/Coins/CoinSpawner"): {
+"CoinSpawner": {
 "children": 0,
 "coins": [  ]
 }
@@ -284,37 +266,47 @@ NodePath("/root/Game/Level/Coins/CoinSpawner"): {
 enemyDict = {
 "Children": 4,
 "Enemies": [ {
-"AnimPosition": 0.412183,
+"AnimPosition": 0.698832,
 "Animation": "walk",
 "Name": "Enemy",
-"Position": Vector2( 349.888, 570.872 ),
-"Velocity": Vector2( 75, 15 )
+"Position": Vector2( 377.15, 570.92 ),
+"Velocity": Vector2( -75, 15 )
 }, {
-"AnimPosition": 0.412183,
+"AnimPosition": 0.698832,
 "Animation": "walk",
 "Name": "Enemy2",
-"Position": Vector2( 568.036, 83.1803 ),
-"Velocity": Vector2( 75, 51.1751 )
-}, {
-"AnimPosition": 0.412183,
-"Animation": "walk",
-"Name": "Enemy3",
-"Position": Vector2( 850.226, 90.9201 ),
+"Position": Vector2( 393.721, 58.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 0.412183,
+"AnimPosition": 0.698832,
+"Animation": "walk",
+"Name": "Enemy3",
+"Position": Vector2( 679.607, 90.9201 ),
+"Velocity": Vector2( 75, 15 )
+}, {
+"AnimPosition": 0.698832,
 "Animation": "walk",
 "Name": "Enemy4",
-"Position": Vector2( 725.43, 90.9201 ),
-"Velocity": Vector2( -75, 15 )
+"Position": Vector2( 875.872, 90.9201 ),
+"Velocity": Vector2( 75, 15 )
 } ]
 }
 platformDict = [ {
-"Position": 2.91666
+"Position": 0.949986
 }, {
-"Position": 2.91666
+"Position": 0.950098
 } ]
 musicDict = {
-"Path": NodePath("/root/Game/Level/Music"),
-"Position": 2.81542
+"Name": "Music",
+"Position": 16.9157
+}
+gameScores = {
+"HighScore": {
+"Coins": 3,
+"Enemies": 0
+},
+"Session": {
+"Coins": 3,
+"Enemies": 0
+}
 }

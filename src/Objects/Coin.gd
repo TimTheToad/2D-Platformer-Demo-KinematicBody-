@@ -20,3 +20,5 @@ func _on_body_entered(_body):
 		
 func pickup():
 	animation_player.play("picked")
+	var game = get_parent().get_parent().get_parent().get_parent()
+	game.coinsCatchedSession = game.coinsCatchedSession + 1
