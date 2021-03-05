@@ -64,9 +64,13 @@ func SpawnCoin(parent, count):
 	
 func SpawnEnemy(parent, count):
 	
+	var enemyGroup = load("res://src/Actors/EnemyGroup.gd").new()
+	enemyGroup.enemyCount = count;
+	
 	for i in range(0, count):
 		var enemyScene = load("res://src/Actors/Enemy.tscn")
 		var enemy = enemyScene.instance()
+		enemy.group = enemyGroup;
 		var x = rng.randf_range(-100.0, 100.0)
 		var y = rng.randf_range(-100.0,100.0)
 		enemy.position = Vector2(x, y)
