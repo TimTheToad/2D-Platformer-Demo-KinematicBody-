@@ -22,8 +22,8 @@ func _ready():
 	
 	coinsCatchedSession = 0
 	enemiesKilledSession = 0
-#	TichProfiler.connect("_save", self, "SaveData")
-#	TichProfiler.connect("_load", self, "LoadData")
+	TichProfiler.connect("_save", self, "SaveData")
+	TichProfiler.connect("_load", self, "LoadData")
 #
 
 	pass
@@ -85,9 +85,15 @@ func SpawnEnemy(parent, count):
 	
 	pass
 	
-func CreateEnemy(parent, enemyDict):
+func CreateEnemy(parent, enemyDict, group):
 	
-	var enemyScene = load("res://src/Actors/Enemy.tscn")
+	var enemyScene
+	
+	if(enemyDict.has("Coin")):
+		enemyScene = load("res://src/Actors/EnemyCoin.tscn")
+	else:
+		enemyScene = load("res://src/Actors/Enemy.tscn")
+		
 	var enemy = enemyScene.instance()
 	parent.add_child(enemy)
 	
@@ -95,8 +101,25 @@ func CreateEnemy(parent, enemyDict):
 	enemy.position = enemyDict["Position"]
 	enemy.name = enemyDict["Name"]
 	enemy._velocity = enemyDict["Velocity"]
+	enemy.group = group
+	
+	var coin = enemy.get_node_or_null("Coin")
+	if(coin):
+		var coinDict = enemyDict["Coin"]
+		var ap = coin.find_node("AnimationPlayer")
+		
+		coin.position = coinDict["Position"]
+		coin.name = coinDict["Name"]
+		
+		ap.current_animation = coinDict["Animation"]
+		ap.play(coinDict["Animation"])
+		ap.seek(coinDict["AnimPosition"])
+		
+		coin.enemy = enemy
+		
 	if(enemyDict["Animation"] == "destroy"):
 		enemy._state = 1
+			
 	animPlayer.current_animation = enemyDict["Animation"]
 	animPlayer.play(enemyDict["Animation"])
 	animPlayer.seek(enemyDict["AnimPosition"])
@@ -173,8 +196,23 @@ func SaveData():
 			"Velocity": enemy._velocity, 
 			"Name" : enemy.name, 
 			"AnimPosition" : animPlayer.current_animation_position,
-			"Animation" : animPlayer.current_animation}
+			"Animation" : animPlayer.current_animation,
+			"Group" : enemy.group.get_instance_id() if enemy.group else enemy.group
+			}
+			#----------Save Enemy Coin Data--------------#
+		var enemyCoin = enemy.get_node_or_null("Coin")
+		
+		if enemyCoin:
+			var coinsDict = {}
+			var ap = enemyCoin.find_node("AnimationPlayer")
+			coinsDict["Position"] =  enemyCoin.position
+			coinsDict["Name"] =  enemyCoin.name
+			coinsDict["AnimPosition"] =  ap.current_animation_position
+			coinsDict["Animation"] =  ap.current_animation
+			enemyDictionary["Coin"] = coinsDict 
+			
 		enemyArr.append(enemyDictionary)
+		
 	newSave.enemyDict["Enemies"] = enemyArr
 		
 	#----------Save Moving Platform Data--------------#
@@ -199,10 +237,10 @@ func SaveData():
 	var sessionScore = {"Enemies" : enemiesKilledSession, "Coins" : coinsCatchedSession}
 	var highScore = {"Enemies" : Statistics._enemyScore, "Coins" : Statistics._coinScore}
 	
-	
 	newSave.gameScores = {"Session" : sessionScore, "HighScore" : highScore}
 	
-	ResourceSaver.save("res://savedScene.tres", newSave)
+	
+	ResourceSaver.save("res://savedScene.tich", newSave)
 	pass
 
 
@@ -219,7 +257,7 @@ func AddDummyNodeRecursevly(parent, height):
 func LoadData():
 	isLoading = true
 	print("LOADING GAME")
-	var loadGameData = load("res://savedScene.tres")
+	var loadGameData = load("res://savedScene.tich")
 	
 	#----------Load Enemies Data--------------#
 	
@@ -233,10 +271,29 @@ func LoadData():
 	for i in range(0, enemyInGameArr.size()):
 		inGameNames.append(enemyInGameArr[i].name)
 
+	var groupDict = {}
+	
+	for enemy in $Level/Enemies.get_children():
+		if enemy.group && not groupDict.has(enemy.group.get_instance_id()):
+			groupDict[enemy.group.get_instance_id()] = enemy.group
+	
 	for j in range(enemyInLoadArr.size()):
 		var index = inGameNames.find(enemyInLoadArr[j]["Name"])
+		
 		if index == -1:
-			CreateEnemy(parent, enemyInLoadArr[j])
+			var groupID = enemyInLoadArr[j]["Group"]
+			var group = null
+			
+			if groupID != null:
+				if groupDict.has(groupID):
+					group = groupDict[groupID]
+				else:
+					group = load("res://src/Actors/EnemyGroup.gd").new()
+					groupDict[groupID] = group
+				
+				group.enemyCount += 1
+				
+			CreateEnemy(parent, enemyInLoadArr[j], group)
 		else:
 			var enemy = parent.get_child(index)
 			var animPlayer = enemy.find_node("AnimationPlayer")

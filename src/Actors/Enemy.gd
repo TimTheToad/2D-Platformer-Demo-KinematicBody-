@@ -16,7 +16,6 @@ onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 
 var group = null
-var coin = null
 
 # This function is called when the scene enters the scene tree.
 # We can initialize variables here.
