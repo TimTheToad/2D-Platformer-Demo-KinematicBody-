@@ -10,6 +10,8 @@ onready var gameSaveData = preload("res://SaveData.gd")
 
 var saveArray = []
 
+var rng = RandomNumberGenerator.new()
+
 func _init():
 	OS.min_window_size = OS.window_size
 	OS.max_window_size = OS.get_screen_size()
@@ -50,7 +52,6 @@ func CreateCoin(parent, coindDict):
 	pass
 	
 func SpawnCoin(parent, count):
-	var rng = RandomNumberGenerator.new()
 	
 	for i in range(0, count):
 		var coinScene = load("res://src/Objects/Coin.tscn")
@@ -63,7 +64,6 @@ func SpawnCoin(parent, count):
 	pass
 	
 func SpawnEnemy(parent, count):
-	var rng = RandomNumberGenerator.new()
 	
 	var enemyGroup = load("res://src/Actors/EnemyGroup.gd").new()
 	enemyGroup.enemyCount = count;
