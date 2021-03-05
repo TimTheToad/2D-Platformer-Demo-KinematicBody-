@@ -18,8 +18,8 @@ func _init():
 
 func _ready():
 	
-#	TichProfiler.connect("_save", self, "SaveData")
-#	TichProfiler.connect("_load", self, "LoadData")
+	TichProfiler.connect("_save", self, "SaveData")
+	TichProfiler.connect("_load", self, "LoadData")
 #
 
 	pass
