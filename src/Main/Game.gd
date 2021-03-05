@@ -8,6 +8,9 @@ extends Node
 onready var _pause_menu = $InterfaceLayer/PauseMenu
 onready var gameSaveData = preload("res://SaveData.gd")
 
+var coinsCatchedSession
+var enemiesKilledSession
+
 var saveArray = []
 
 var rng = RandomNumberGenerator.new()
@@ -19,6 +22,8 @@ func _init():
 
 func _ready():
 	
+	coinsCatchedSession = 0
+	enemiesKilledSession = 0
 	TichProfiler.connect("_save", self, "SaveData")
 	TichProfiler.connect("_load", self, "LoadData")
 #
@@ -80,9 +85,15 @@ func SpawnEnemy(parent, count):
 	
 	pass
 	
-func CreateEnemy(parent, enemyDict):
+func CreateEnemy(parent, enemyDict, group):
 	
-	var enemyScene = load("res://src/Actors/Enemy.tscn")
+	var enemyScene
+	
+	if(enemyDict.has("Coin")):
+		enemyScene = load("res://src/Actors/EnemyCoin.tscn")
+	else:
+		enemyScene = load("res://src/Actors/Enemy.tscn")
+		
 	var enemy = enemyScene.instance()
 	parent.add_child(enemy)
 	
@@ -90,8 +101,25 @@ func CreateEnemy(parent, enemyDict):
 	enemy.position = enemyDict["Position"]
 	enemy.name = enemyDict["Name"]
 	enemy._velocity = enemyDict["Velocity"]
+	enemy.group = group
+	
+	var coin = enemy.get_node_or_null("Coin")
+	if(coin):
+		var coinDict = enemyDict["Coin"]
+		var ap = coin.find_node("AnimationPlayer")
+		
+		coin.position = coinDict["Position"]
+		coin.name = coinDict["Name"]
+		
+		ap.current_animation = coinDict["Animation"]
+		ap.play(coinDict["Animation"])
+		ap.seek(coinDict["AnimPosition"])
+		
+		coin.enemy = enemy
+		
 	if(enemyDict["Animation"] == "destroy"):
 		enemy._state = 1
+			
 	animPlayer.current_animation = enemyDict["Animation"]
 	animPlayer.play(enemyDict["Animation"])
 	animPlayer.seek(enemyDict["AnimPosition"])
@@ -115,14 +143,14 @@ func SaveData():
 		"Velocity": player._velocity, 
 		"SpriteScale": $Level/Player/Sprite.scale.x
 		} 
-	newSave.playerDict[player.get_path()] = playerDict
+	newSave.playerDict[player.name] = playerDict
 
 	#----------Save Bullet Data--------------#
 
 	var playerGun = $Level/Player/Sprite/Gun
 	var gunChildCount = $Level/Player/Sprite/Gun.get_child_count()
+	var bulletArray = []
 	if(gunChildCount > 2):
-		var bulletArray = []
 		for i in range(2, gunChildCount):
 			var bulletDict = {}
 			bulletDict = {
@@ -131,13 +159,13 @@ func SaveData():
 			}
 			bulletArray.append(bulletDict)
 
-		newSave.playerDict["Bullets"] = bulletArray
+	newSave.playerDict["Bullets"] = bulletArray
 
 	#----------Save Coin Data--------------#
 
 	var iterator = 0
 	for coinChunk in $Level/Coins.get_children():
-		var coinChunkPath = {coinChunk.get_path() : {}}
+		var coinChunkPath = {coinChunk.name : {}}
 		var coinChunkDict = {}
 		coinChunkDict["children"] = coinChunk.get_child_count()
 
@@ -153,7 +181,7 @@ func SaveData():
 			dict.append(coinsDict)
 
 		coinChunkDict["coins"] = dict
-		coinChunkPath[coinChunk.get_path()] = coinChunkDict
+		coinChunkPath[coinChunk.name] = coinChunkDict
 
 		newSave.coinDict.append(coinChunkPath) 
 
@@ -168,8 +196,23 @@ func SaveData():
 			"Velocity": enemy._velocity, 
 			"Name" : enemy.name, 
 			"AnimPosition" : animPlayer.current_animation_position,
-			"Animation" : animPlayer.current_animation}
+			"Animation" : animPlayer.current_animation,
+			"Group" : enemy.group.get_instance_id() if enemy.group else enemy.group
+			}
+			#----------Save Enemy Coin Data--------------#
+		var enemyCoin = enemy.get_node_or_null("Coin")
+		
+		if enemyCoin:
+			var coinsDict = {}
+			var ap = enemyCoin.find_node("AnimationPlayer")
+			coinsDict["Position"] =  enemyCoin.position
+			coinsDict["Name"] =  enemyCoin.name
+			coinsDict["AnimPosition"] =  ap.current_animation_position
+			coinsDict["Animation"] =  ap.current_animation
+			enemyDictionary["Coin"] = coinsDict 
+			
 		enemyArr.append(enemyDictionary)
+		
 	newSave.enemyDict["Enemies"] = enemyArr
 		
 	#----------Save Moving Platform Data--------------#
@@ -185,11 +228,19 @@ func SaveData():
 	
 	#----------Save Music Data--------------#
 
-	newSave.musicDict = {"Path" : $Level/Music.get_path(), "Position" : $Level/Music.get_playback_position()}
+	newSave.musicDict = {"Name" : $Level/Music.name, "Position" : $Level/Music.get_playback_position()}
 
 	saveArray.append(newSave)
+	
+	#----------Save Score Data--------------#
+	
+	var sessionScore = {"Enemies" : enemiesKilledSession, "Coins" : coinsCatchedSession}
+	var highScore = {"Enemies" : Statistics._enemyScore, "Coins" : Statistics._coinScore}
+	
+	newSave.gameScores = {"Session" : sessionScore, "HighScore" : highScore}
+	
+	
 	ResourceSaver.save("res://savedScene.tich", newSave)
-
 	pass
 
 
@@ -220,10 +271,29 @@ func LoadData():
 	for i in range(0, enemyInGameArr.size()):
 		inGameNames.append(enemyInGameArr[i].name)
 
+	var groupDict = {}
+	
+	for enemy in $Level/Enemies.get_children():
+		if enemy.group && not groupDict.has(enemy.group.get_instance_id()):
+			groupDict[enemy.group.get_instance_id()] = enemy.group
+	
 	for j in range(enemyInLoadArr.size()):
 		var index = inGameNames.find(enemyInLoadArr[j]["Name"])
+		
 		if index == -1:
-			CreateEnemy(parent, enemyInLoadArr[j])
+			var groupID = enemyInLoadArr[j]["Group"]
+			var group = null
+			
+			if groupID != null:
+				if groupDict.has(groupID):
+					group = groupDict[groupID]
+				else:
+					group = load("res://src/Actors/EnemyGroup.gd").new()
+					groupDict[groupID] = group
+				
+				group.enemyCount += 1
+				
+			CreateEnemy(parent, enemyInLoadArr[j], group)
 		else:
 			var enemy = parent.get_child(index)
 			var animPlayer = enemy.find_node("AnimationPlayer")
@@ -236,15 +306,15 @@ func LoadData():
 
 	#----------Load Player Data--------------#
 	var player = $Level/Player
-	var playerDict = loadGameData.playerDict[player.get_path()]
+	var playerDict = loadGameData.playerDict[player.name]
 	player.position = playerDict["Position"] # bug here! when platform moves up. Collision is not detected.
 	player._velocity = playerDict["Velocity"]
 	$Level/Player/Sprite.scale.x = playerDict["SpriteScale"]
 	
 	#----------Load Bullet Data--------------#
 	var playerGun = $Level/Player/Sprite/Gun
-	var bulletArray = loadGameData.playerDict["Bullets"]
 	var gunChildCount =  playerGun.get_child_count()
+	var bulletArray = loadGameData.playerDict["Bullets"]
 	
 	if(gunChildCount > 2): #Remove existing bullets
 		for i in range(2, gunChildCount):
@@ -275,7 +345,7 @@ func LoadData():
 	for coinChunk in $Level/Coins.get_children():
 
 		var loadArr = loadGameData.coinDict[it]
-		var dict = loadArr[coinChunk.get_path()]
+		var dict = loadArr[coinChunk.name]
 		it = it + 1
 		
 		var childCountInGame = coinChunk.get_child_count()
@@ -308,12 +378,32 @@ func LoadData():
 		
 		#----------Load Music Data--------------#
 		
-		var musicNode = get_node(loadGameData.musicDict["Path"])
+		var musicNode = find_node(loadGameData.musicDict["Name"])
 		musicNode.play(loadGameData.musicDict["Position"])
+		
+		#----------Load Score Data--------------#
+		
+		enemiesKilledSession = loadGameData.gameScores["Session"]["Enemies"]
+		coinsCatchedSession = loadGameData.gameScores["Session"]["Coins"]
+		
+		Statistics._enemyScore = loadGameData.gameScores["HighScore"]["Enemies"]
+		Statistics._coinScore = loadGameData.gameScores["HighScore"]["Coins"]
 	pass
 
-func VerifySavedData():
-	#maybe we can skip this
+func ResetGame():
+	
+	# Remove the current scene
+	queue_free()
+
+	# Add the next level
+	var gameScene = load("res://src/Main/Game.tscn")
+	var game = gameScene.instance()
+	
+	get_tree().get_root().add_child(game)
+	
+	get_tree().change_scene_to(game)
+	
+	
 	pass
 
 func _physics_process(delta):
@@ -324,6 +414,8 @@ func _physics_process(delta):
 		LoadData()
 		isLoading = false
 		
+	if Input.is_action_just_pressed("Reset_Game"):
+		ResetGame()
 		
 	if Input.is_action_just_pressed("spawn_coin"):
 		var coinSpawnerNode = $Level/Coins/CoinSpawner
@@ -331,6 +423,20 @@ func _physics_process(delta):
 
 		SpawnCoin(coinSpawnerNode, 100)
 		SpawnEnemy(enemySpawnerNode, 10)
+		
+	if Input.is_action_just_pressed("Show_Score"):	
+		print("---------------SESSION INFO-----------------")
+		print("Coins catched this session: ", coinsCatchedSession)
+		print("Enemies killed this session: ", enemiesKilledSession)
+		
+		print("Most Coins catched: ", Statistics._coinScore)
+		print("Most Enemies killed: ", Statistics._enemyScore)
+		
+	if coinsCatchedSession > Statistics._coinScore:
+		Statistics._coinScore = coinsCatchedSession
+		
+	if enemiesKilledSession > Statistics._enemyScore:
+		Statistics._enemyScore = enemiesKilledSession
 		
 	pass
 

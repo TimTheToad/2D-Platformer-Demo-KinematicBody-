@@ -16,7 +16,6 @@ onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 
 var group = null
-var coin = null
 
 # This function is called when the scene enters the scene tree.
 # We can initialize variables here.
@@ -73,6 +72,9 @@ func destroy():
 		
 	_state = State.DEAD
 	_velocity = Vector2.ZERO
+	
+	var game = get_parent().get_parent().get_parent()
+	game.enemiesKilledSession = game.enemiesKilledSession + 1
 
 func get_new_animation():
 	var animation_new = ""
