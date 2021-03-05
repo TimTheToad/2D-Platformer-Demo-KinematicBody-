@@ -62,6 +62,10 @@ run/main_scene="res://src/Main/Game.tscn"
 config/icon="res://icon.png"
 target_fps="60"
 
+[autoload]
+
+Statistics="*res://src/Main/Statistics.gd"
+
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
@@ -230,6 +234,16 @@ load={
 spawn_coin={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Show_Score={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Reset_Game={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

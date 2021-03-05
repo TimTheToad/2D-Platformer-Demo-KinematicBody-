@@ -18,8 +18,8 @@ func _init():
 
 func _ready():
 	
-	TichProfiler.connect("_save", self, "SaveData")
-	TichProfiler.connect("_load", self, "LoadData")
+#	TichProfiler.connect("_save", self, "SaveData")
+#	TichProfiler.connect("_load", self, "LoadData")
 #
 
 	pass
@@ -306,8 +306,22 @@ func LoadData():
 		musicNode.play(loadGameData.musicDict["Position"])
 	pass
 
-func VerifySavedData():
-	#maybe we can skip this
+func ResetGame():
+	
+	# Remove the current scene
+	queue_free()
+
+
+
+	# Add the next level
+	var gameScene = load("res://src/Main/Game.tscn")
+	var game = gameScene.instance()
+	
+	get_tree().get_root().add_child(game)
+	
+	get_tree().current_scene = game
+	
+	
 	pass
 
 func _physics_process(delta):
@@ -318,6 +332,8 @@ func _physics_process(delta):
 		LoadData()
 		isLoading = false
 		
+	if Input.is_action_just_pressed("Reset_Game"):
+		ResetGame()
 		
 	if Input.is_action_just_pressed("spawn_coin"):
 		var coinSpawnerNode = $Level/Coins/CoinSpawner
