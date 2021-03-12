@@ -11,7 +11,7 @@ gsLoadData = 'data_gs_load.csv'
 gaSaveData = 'data_ga_save.csv'
 gaLoadData = 'data_ga_load.csv'
 
-set grid
+set grid y
 set yrange[0:70000]
 set ytics auto
 set xtics auto
