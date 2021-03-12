@@ -1,0 +1,40 @@
+reset
+set size 1800, 600
+
+set title "Tendency for the intelligence values"
+set multiplot layout 1,2 title "Removing the Orb the Eternal Frost" font ",16"
+
+set xrange[1:10]
+set yrange[0:25]
+
+set ytics 1
+set grid
+
+func1(x) = x*a + b
+func2(x) = x*c + d
+category = "Human Firbolg"
+set ylabel "Dice Result"
+set xlabel "Dice Throw"
+fit[1:10] func1(x) 'Orb.txt' using 1:3 via a, b
+fit[1:10] func2(x) 'Orb.txt' using 4:6 via c, d
+plot 'Orb.txt' using 1:3 title word(category,1) lc "black" lw 4 with lines, '' using 1:6 title word(category,2) lc "#708090" lw 4 with lines, func1(x) lw 4 title "regression line Human", func2(x) lw 4 title "regression line Firbolg"
+
+
+
+set title "Variation in the dexterity values"
+set xrange[0:5]
+set yrange[0:20]
+set xtics ("Human" 1, "Firbolg" 3) scale 0.0
+set ytics 1
+set grid y
+set xlabel "Character"
+set style fill solid 0.3
+
+plot 'Orb.txt' using (1):2 title word(category,1) with boxplot fc "black", '' using (3):5 title word(category,2) with boxplot fc "#708090"
+
+unset multiplot
+
+
+
+#plot newhistogram "Human" lt 2 fs pattern 1,'Orb.txt' using (1):2 title word(category,1) lc "grey" with boxplot fc "blue", '' u (10):5 title word(category,2) lc "#708090" with boxplot fc "red", \
+#newhistogram "Firbolg" lt 2 fs pattern 1,'' u 5:xtic(1) title word(category,1) lc "grey", '' u 6 title word(category,2) lc "#708090", \
