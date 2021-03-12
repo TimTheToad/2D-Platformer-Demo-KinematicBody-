@@ -11,8 +11,6 @@ onready var gameSaveData = preload("res://SaveData.gd")
 var coinsCatchedSession
 var enemiesKilledSession
 
-var saveArray = []
-
 var rng = RandomNumberGenerator.new()
 
 func _init():
@@ -229,8 +227,6 @@ func SaveData():
 	#----------Save Music Data--------------#
 
 	newSave.musicDict = {"Name" : $Level/Music.name, "Position" : $Level/Music.get_playback_position()}
-
-	saveArray.append(newSave)
 	
 	#----------Save Score Data--------------#
 	
@@ -241,17 +237,6 @@ func SaveData():
 	
 	
 	ResourceSaver.save("res://savedScene.tich", newSave)
-	pass
-
-
-func AddDummyNodeRecursevly(parent, height):
-#
-#	if height != 0:
-#		var coinScene = load("res://src/Objects/Coin.tscn")
-#		var coin = coinScene.instance()
-#		height = height - 1
-#		AddDummyNodeRecursevly(coin, height)
-#		parent.add_child(coin)
 	pass
 
 func LoadData():

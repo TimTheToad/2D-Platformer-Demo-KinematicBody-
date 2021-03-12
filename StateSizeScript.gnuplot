@@ -14,7 +14,7 @@ gaLoadData = 'data_ga_load.csv'
 
 set grid y
 unset key
-set yrange[0:6000]
+
 set xrange[0:3]
 set xtics ("Gs" 1, "Ga" 2) scale 0.0
 set ytics auto
@@ -25,6 +25,6 @@ set xlabel "Implementation Model"
 set bmargin 5
 set style fill solid 0.3
 
-plot gsSaveData using (1):4 title 'Gs' lt rgb "black" with boxes, gaSaveData using (2):4 title 'Ga' lt rgb "grey" with boxes
+plot gsSaveData using (1):5 title 'Gs' lt rgb "black" with boxes, gaSaveData using (2):5 title 'Ga' lt rgb "grey" with boxes
 
 unset multiplot
