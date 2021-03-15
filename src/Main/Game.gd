@@ -24,6 +24,7 @@ func _ready():
 	enemiesKilledSession = 0
 	TichProfiler.connect("_save", self, "SaveData")
 	TichProfiler.connect("_load", self, "LoadData")
+	TichProfiler.connect("_change_level", self, "ChangeLevel")
 #
 
 	pass
@@ -408,7 +409,10 @@ func _physics_process(delta):
 
 		SpawnCoin(coinSpawnerNode, 100)
 		SpawnEnemy(enemySpawnerNode, 10)
-		
+
+	if Input.is_action_just_pressed("Change_Level"):
+		ChangeLevel()
+				
 	if Input.is_action_just_pressed("Show_Score"):	
 		print("---------------SESSION INFO-----------------")
 		print("Coins catched this session: ", coinsCatchedSession)
@@ -424,6 +428,26 @@ func _physics_process(delta):
 		Statistics._enemyScore = enemiesKilledSession
 		
 	pass
+
+var currentLevel = "res://src/Level/Level.tscn"
+
+func ChangeLevel():
+	var player = $Level/Player
+	$Level.remove_child(player)
+	self.get_node("Level").free()
+	
+	if currentLevel == "res://src/Level/Level.tscn":
+		currentLevel = "res://src/Level/Level1st.tscn"
+		print("Changeing to Scene Complexity 1")
+	elif currentLevel == "res://src/Level/Level1st.tscn":
+		currentLevel = "res://src/Level/Level.tscn"
+		print("Changeing to Scene Complexity 2 & 3")
+		
+	var newLevel = load(currentLevel).instance()
+	newLevel.name = "Level"
+	newLevel.add_child(player)
+	self.add_child(newLevel)
+pass
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
