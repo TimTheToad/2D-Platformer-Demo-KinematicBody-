@@ -66,6 +66,7 @@ func destroy():
 	if(_state != State.DEAD):
 		if(group != null):
 			group.destroy()
+			group = null;
 
 		if(has_node("Coin")):
 			get_node("Coin").pickup()

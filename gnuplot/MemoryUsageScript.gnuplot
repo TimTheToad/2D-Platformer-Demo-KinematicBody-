@@ -4,12 +4,13 @@ set multiplot layout 1,2
 set datafile separator ';'
 set style data lines
 
-set title "Save State RAM Utilization"
-gsSaveData = 'data_gs_save.csv'
-gsLoadData = 'data_gs_load.csv'
+set title "Save State RAM Utilization With Complexity ".(ARG1+1)
+fileEnd = ARG1.".csv";
+gsSaveData = "../data/gs_save_".fileEnd
+gsLoadData = "../data/gs_load_".fileEnd
 
-gaSaveData = 'data_ga_save.csv'
-gaLoadData = 'data_ga_load.csv'
+gaSaveData = "../data/ga_save_".fileEnd
+gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
 
@@ -22,7 +23,7 @@ set style fill solid 0.3
 
 plot gsSaveData using 4 title 'Gs', gaSaveData using 4 title 'Ga'
 
-set title "Load State RAM Utilization" 
+set title "Load State RAM Utilization With Complexity ".(ARG1+1)
 
 plot gsLoadData using 4 title 'Gs', gaLoadData using 4 title 'Ga'
 

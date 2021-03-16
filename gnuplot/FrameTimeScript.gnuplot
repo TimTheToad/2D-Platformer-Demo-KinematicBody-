@@ -4,12 +4,13 @@ set multiplot layout 1,2
 set datafile separator ';'
 set style data lines
 
-set title "Save Data Frame Time"
-gsSaveData = 'data_gs_save.csv'
-gsLoadData = 'data_gs_load.csv'
+set title "Save Data Frame Time With Complexity ".(ARG1+1)
+fileEnd = ARG1.".csv";
+gsSaveData = "../data/gs_save_".fileEnd
+gsLoadData = "../data/gs_load_".fileEnd
 
-gaSaveData = 'data_ga_save.csv'
-gaLoadData = 'data_ga_load.csv'
+gaSaveData = "../data/ga_save_".fileEnd
+gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
 set yrange[0:70000]
@@ -23,6 +24,6 @@ set style fill solid 0.3
 
 plot gsSaveData using 1 title 'Gs', gaSaveData using 1 title 'Ga'
 
-set title "Load Data Frame Time" 
+set title "Load Data Frame Time With Complexity ".(ARG1+1) 
 plot gsLoadData using 1 title 'Gs', gaLoadData using 1 title 'Ga'
 unset multiplot

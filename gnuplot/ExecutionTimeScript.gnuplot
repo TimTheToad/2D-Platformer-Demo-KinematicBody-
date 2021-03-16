@@ -7,12 +7,13 @@ set boxwidth 1
 set style data histogram
 set style histogram cluster
 
-set title "Save State Execution Time"
-gsSaveData = 'data_gs_save.csv'
-gsLoadData = 'data_gs_load.csv'
+set title "Save State Execution Time With Complexity ".(ARG1+1)
+fileEnd = ARG1.".csv";
+gsSaveData = "../data/gs_save_".fileEnd
+gsLoadData = "../data/gs_load_".fileEnd
 
-gaSaveData = 'data_ga_save.csv'
-gaLoadData = 'data_ga_load.csv'
+gaSaveData = "../data/ga_save_".fileEnd
+gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
 set key outside
@@ -27,7 +28,7 @@ set style fill solid 0.3
 
 plot gsSaveData using 8 title 'Gs' lt rgb "black", gaSaveData using 8 title 'Ga' lt rgb "grey"
 
-set title "Load State Execution Time" 
+set title "Load State Execution Time With Complexity ".(ARG1+1)
 
 plot gsLoadData using 8 title 'Gs' lt rgb "black", gaLoadData using 8 title 'Ga' lt rgb "grey"
 
