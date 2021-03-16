@@ -22,9 +22,9 @@ func _ready():
 	
 	coinsCatchedSession = 0
 	enemiesKilledSession = 0
-#	TichProfiler.connect("_save", self, "SaveData")
-#	TichProfiler.connect("_load", self, "LoadData")
-#	TichProfiler.connect("_change_level", self, "ChangeLevel")
+	TichProfiler.connect("_save", self, "SaveData")
+	TichProfiler.connect("_load", self, "LoadData")
+	TichProfiler.connect("_change_level", self, "ChangeLevel")
 
 	pass
 
@@ -229,13 +229,13 @@ func SaveData():
 	newSave.gameScores = {"Session" : sessionScore, "HighScore" : highScore}
 	
 	
-	ResourceSaver.save("res://savedScene.tres", newSave)
+	ResourceSaver.save("res://savedScene.tich", newSave)
 	pass
 
 func LoadData():
 	isLoading = true
 	print("LOADING GAME")
-	var loadGameData = load("res://savedScene.tres")
+	var loadGameData = load("res://savedScene.tich")
 	
 	#----------Load Enemies Data--------------#
 	
@@ -413,7 +413,7 @@ func _physics_process(delta):
 		var coinSpawnerNode = $Level/Coins/CoinSpawner
 		var enemySpawnerNode = $Level/Enemies
 
-		SpawnCoin(coinSpawnerNode, 1)
+		SpawnCoin(coinSpawnerNode, 100)
 		SpawnEnemy(enemySpawnerNode, 10)
 
 	if Input.is_action_just_pressed("Change_Level"):
