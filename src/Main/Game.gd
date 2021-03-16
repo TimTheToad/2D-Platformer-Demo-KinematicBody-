@@ -22,9 +22,9 @@ func _ready():
 	
 	coinsCatchedSession = 0
 	enemiesKilledSession = 0
-	TichProfiler.connect("_save", self, "SaveData")
-	TichProfiler.connect("_load", self, "LoadData")
-	TichProfiler.connect("_change_level", self, "ChangeLevel")
+#	TichProfiler.connect("_save", self, "SaveData")
+#	TichProfiler.connect("_load", self, "LoadData")
+#	TichProfiler.connect("_change_level", self, "ChangeLevel")
 
 	pass
 
@@ -48,7 +48,7 @@ func CreateCoin(parent, coindDict):
 	parent.add_child(coin)
 	
 	coin.position = coindDict["Position"]
-	coin.name = coindDict["Name"]
+	coin.ID = coindDict["ID"]
 	animPlayer.current_animation = coindDict["Animation"]
 	animPlayer.play(coindDict["Animation"])
 	animPlayer.seek(coindDict["AnimPosition"])
@@ -97,7 +97,7 @@ func CreateEnemy(parent, enemyDict, group):
 	
 	var animPlayer = enemy.find_node("AnimationPlayer")
 	enemy.position = enemyDict["Position"]
-	enemy.name = enemyDict["Name"]
+	enemy.ID = enemyDict["ID"]
 	enemy._velocity = enemyDict["Velocity"]
 	enemy.group = group
 	
@@ -163,25 +163,18 @@ func SaveData():
 
 	var iterator = 0
 	for coinChunk in $Level/Coins.get_children():
-		var coinChunkPath = {coinChunk.name : {}}
-		var coinChunkDict = {}
-		coinChunkDict["children"] = coinChunk.get_child_count()
-
-		var dict = []
+		var coinChunkDict = {"Group": coinChunk.name, "coins" : []}
 
 		for coin in coinChunk.get_children():
-			var coinsDict = {}
+			var coinDict = {}
 			var animPlayer = coin.find_node("AnimationPlayer")
-			coinsDict["Position"] =  coin.position
-			coinsDict["Name"] =  coin.name
-			coinsDict["AnimPosition"] =  animPlayer.current_animation_position
-			coinsDict["Animation"] =  animPlayer.current_animation
-			dict.append(coinsDict)
+			coinDict["Position"] =  coin.position
+			coinDict["ID"] =  coin.ID
+			coinDict["AnimPosition"] =  animPlayer.current_animation_position
+			coinDict["Animation"] =  animPlayer.current_animation
+			coinChunkDict["coins"].append(coinDict)
 
-		coinChunkDict["coins"] = dict
-		coinChunkPath[coinChunk.name] = coinChunkDict
-
-		newSave.coinDict.append(coinChunkPath) 
+		newSave.coinArray.append(coinChunkDict) 
 
 	#----------Save Enemy Data--------------#
 
@@ -192,7 +185,7 @@ func SaveData():
 		var enemyDictionary = {
 			"Position": enemy.position, 
 			"Velocity": enemy._velocity, 
-			"Name" : enemy.name.replace("@", ""), 
+			"ID" : enemy.ID, 
 			"AnimPosition" : animPlayer.current_animation_position,
 			"Animation" : animPlayer.current_animation,
 			"Group" : enemy.group.get_instance_id() if enemy.group else null
@@ -236,13 +229,13 @@ func SaveData():
 	newSave.gameScores = {"Session" : sessionScore, "HighScore" : highScore}
 	
 	
-	ResourceSaver.save("res://savedScene.tich", newSave)
+	ResourceSaver.save("res://savedScene.tres", newSave)
 	pass
 
 func LoadData():
 	isLoading = true
 	print("LOADING GAME")
-	var loadGameData = load("res://savedScene.tich")
+	var loadGameData = load("res://savedScene.tres")
 	
 	#----------Load Enemies Data--------------#
 	
@@ -251,19 +244,30 @@ func LoadData():
 	var enemyInGameArr = parent.get_children()
 	var enemyInLoadArr = loadGameData.enemyDict["Enemies"]
 	
-	var inGameEnemyName = []
-	
-	for i in range(0, enemyInGameArr.size()):
-		inGameEnemyName.append(enemyInGameArr[i].name)
+	var inGameEnemyIDArr = []
 
 	var groupDict = {}
 	
-	for enemy in $Level/Enemies.get_children():
-		if enemy.group && not groupDict.has(enemy.group.get_instance_id()):
-			groupDict[enemy.group.get_instance_id()] = enemy.group
+	for enemy in enemyInGameArr:
+		var exists = false
+		
+		for enemyDict in enemyInLoadArr:
+			if enemy.ID == enemyDict["ID"]:
+				exists = true
+				break
+			
+		if not exists:
+			print("Deleting enemy with ID: ", enemy.ID)
+			enemy.queue_free()
+		else:
+			inGameEnemyIDArr.append(enemy.ID)
+			if enemy.group && not groupDict.has(enemy.group.get_instance_id()):
+				groupDict[enemy.group.get_instance_id()] = enemy.group	
+		
+		
 	
 	for j in range(enemyInLoadArr.size()):
-		var index = inGameEnemyName.find(enemyInLoadArr[j]["Name"])
+		var index = inGameEnemyIDArr.find(enemyInLoadArr[j]["ID"])
 		
 		if index == -1:
 			var groupID = enemyInLoadArr[j]["Group"]
@@ -325,41 +329,44 @@ func LoadData():
 	
 	
 	#----------Load Coin Data--------------#
-	var it = 0
 
 	for coinChunk in $Level/Coins.get_children():
+		
+		for coinInGame in coinChunk.get_children():
+			
+			var exists = false
+			for chunkInLoad in loadGameData.coinArray:
 
-		var loadArr = loadGameData.coinDict[it]
-		var dict = loadArr[coinChunk.name]
-		it = it + 1
+				for coinInLoad in chunkInLoad["coins"]:
+
+					if coinInLoad["ID"] == coinInGame.ID:
+						exists = true
+						break
+					
+				if exists:
+					break
+			if not exists:
+				coinInGame.queue_free()
+	
+	for chunkInLoad in loadGameData.coinArray:
 		
-		var childCountInGame = coinChunk.get_child_count()
-		var childCountInLoad = dict["children"]
+		var chunkInGame = $Level/Coins.get_node(chunkInLoad["Group"])
+		for coinInLoad in chunkInLoad["coins"]:
+			
+			var exists = false
 		
-		if childCountInLoad > childCountInGame : # should add a coin to game from save file
-			var coinsInChunk = coinChunk.get_children()
-			var treeNames = []
-			var coinsDictInLoad = dict["coins"]
-			
-			for j in range(0, coinsInChunk.size()):
-				treeNames.append(coinsInChunk[j].name)
-			
-			for i in range(0, coinsDictInLoad.size()):
-				if treeNames.has(coinsDictInLoad[i]["Name"]):
-					continue
-				else:
-					CreateCoin(coinChunk, coinsDictInLoad[i])
-		elif childCountInLoad < childCountInGame: # Should remove a coin from the game 
-			var namesInLoad = []
-			for i in range(0, childCountInLoad):
-				namesInLoad.append(dict["coins"][i]["Name"])
-				
-			var coinsInChunk = coinChunk.get_children()
-			var treeNames = []
-			for j in range(0, coinsInChunk.size()):
-				var coinName = coinsInChunk[j].name
-				if not namesInLoad.has(coinName):
-					coinChunk.get_node(coinName).free()
+			for coinInGame in chunkInGame.get_children():
+				if coinInLoad["ID"] == coinInGame.ID:
+					exists = true
+					var animPlayer = coinInGame.find_node("AnimationPlayer")
+					
+					coinInGame.position = coinInLoad["Position"]
+					animPlayer.current_animation = coinInLoad["Animation"]
+					animPlayer.seek(coinInLoad["AnimPosition"])
+					break
+					
+			if not exists:
+				CreateCoin(chunkInGame, coinInLoad)
 		
 		#----------Load Music Data--------------#
 		
@@ -406,7 +413,7 @@ func _physics_process(delta):
 		var coinSpawnerNode = $Level/Coins/CoinSpawner
 		var enemySpawnerNode = $Level/Enemies
 
-		SpawnCoin(coinSpawnerNode, 100)
+		SpawnCoin(coinSpawnerNode, 1)
 		SpawnEnemy(enemySpawnerNode, 10)
 
 	if Input.is_action_just_pressed("Change_Level"):

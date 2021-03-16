@@ -14,12 +14,14 @@ onready var floor_detector_left = $FloorDetectorLeft
 onready var floor_detector_right = $FloorDetectorRight
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
+var ID = -1
 
 var group = null
 
 # This function is called when the scene enters the scene tree.
 # We can initialize variables here.
 func _ready():
+	ID = Statistics.CreateID()
 	_velocity.x = speed.x
 
 # Physics process is a built-in loop in Godot.
