@@ -5,13 +5,17 @@ extends Node
 # var a = 2
 # var b = "text"
 
-var _coinScore = 0;
-var _enemyScore = 0;
+var _coinScore = 0
+var _enemyScore = 0
+var _IDCounter = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func CreateID():
+	_IDCounter += 1
+	return _IDCounter
 
 func _physics_process(delta):
 	

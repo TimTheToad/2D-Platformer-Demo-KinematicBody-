@@ -7,1420 +7,549 @@ script = ExtResource( 1 )
 playerDict = {
 "Bullets": [  ],
 "Player": {
-"Position": Vector2( 164.578, 229.982 ),
+"Position": Vector2( 711.076, 453.998 ),
 "SpriteScale": -1.0,
 "Velocity": Vector2( 0, 15 )
 }
 }
-coinDict = [ {
-"CoinsArc": {
-"children": 2,
+coinArray = [ {
+"Group": "CoinsArc",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 1,
 "Position": Vector2( -14.7314, 29.9809 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 2,
 "Position": Vector2( 0.0855715, 0.070923 )
 } ]
-}
 }, {
-"CoinsVertical": {
-"children": 0,
-"coins": [  ]
-}
-}, {
-"CoinsVertical2": {
-"children": 3,
+"Group": "CoinsVertical",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
-"Position": Vector2( -0.0551455, 15.9351 )
-}, {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin2",
-"Position": Vector2( -0.0551455, -0.0649415 )
-}, {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin3",
+"ID": 6,
 "Position": Vector2( -0.0551455, -16.065 )
 } ]
-}
 }, {
-"CoinsSquare": {
-"children": 4,
+"Group": "CoinsVertical2",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 7,
+"Position": Vector2( -0.0551455, 15.9351 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 8,
+"Position": Vector2( -0.0551455, -0.0649415 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 9,
+"Position": Vector2( -0.0551455, -16.065 )
+} ]
+}, {
+"Group": "CoinsSquare",
+"coins": [ {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 10,
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 11,
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 12,
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin4",
+"ID": 13,
 "Position": Vector2( 16, 16 )
 } ]
-}
 }, {
-"CoinsSquare2": {
-"children": 4,
+"Group": "CoinsSquare2",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 14,
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 15,
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 16,
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin4",
+"ID": 17,
 "Position": Vector2( 16, 16 )
 } ]
-}
 }, {
-"CoinsSquare3": {
-"children": 4,
+"Group": "CoinsSquare3",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 18,
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 19,
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 20,
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin4",
+"ID": 21,
 "Position": Vector2( 16, 16 )
 } ]
-}
 }, {
-"CoinsSquare4": {
-"children": 4,
+"Group": "CoinsSquare4",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 22,
 "Position": Vector2( -16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 23,
 "Position": Vector2( 16, -16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 24,
 "Position": Vector2( -16, 16 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin4",
+"ID": 25,
 "Position": Vector2( 16, 16 )
 } ]
-}
 }, {
-"CoinsHorizontal": {
-"children": 3,
+"Group": "CoinsHorizontal",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 26,
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 27,
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 28,
 "Position": Vector2( 16, 0 )
 } ]
-}
 }, {
-"CoinsHorizontal2": {
-"children": 2,
+"Group": "CoinsHorizontal2",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
-"Position": Vector2( 0, 0 )
-}, {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin3",
-"Position": Vector2( 16, 0 )
-} ]
-}
-}, {
-"CoinsHorizontal3": {
-"children": 1,
-"coins": [ {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin",
-"Position": Vector2( -16, 0 )
-} ]
-}
-}, {
-"CoinsHorizontal4": {
-"children": 3,
-"coins": [ {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin",
+"ID": 29,
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 30,
 "Position": Vector2( 0, 0 )
-}, {
-"AnimPosition": 0.014253,
-"Animation": "spinning",
-"Name": "Coin3",
-"Position": Vector2( 16, 0 )
 } ]
-}
 }, {
-"CoinsHorizontal5": {
-"children": 3,
+"Group": "CoinsHorizontal3",
 "coins": [ {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 32,
 "Position": Vector2( -16, 0 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin2",
+"ID": 33,
 "Position": Vector2( 0, 0 )
 }, {
-"AnimPosition": 0.014253,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin3",
+"ID": 34,
 "Position": Vector2( 16, 0 )
 } ]
-}
 }, {
-"CoinSpawner": {
-"children": 200,
+"Group": "CoinsHorizontal4",
 "coins": [ {
-"AnimPosition": 0.604983,
+"AnimPosition": 0.122435,
 "Animation": "spinning",
-"Name": "Coin",
+"ID": 35,
+"Position": Vector2( -16, 0 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 36,
+"Position": Vector2( 0, 0 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 37,
+"Position": Vector2( 16, 0 )
+} ]
+}, {
+"Group": "CoinsHorizontal5",
+"coins": [ {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 38,
+"Position": Vector2( -16, 0 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 39,
+"Position": Vector2( 0, 0 )
+}, {
+"AnimPosition": 0.122435,
+"Animation": "spinning",
+"ID": 40,
+"Position": Vector2( 16, 0 )
+} ]
+}, {
+"Group": "CoinSpawner",
+"coins": [ {
+"AnimPosition": 0.0295062,
+"Animation": "spinning",
+"ID": 45,
 "Position": Vector2( 24.2449, 95.7949 )
 }, {
-"AnimPosition": 0.604983,
+"AnimPosition": 1.22499,
 "Animation": "spinning",
-"Name": "@Coin@2",
-"Position": Vector2( -26.5422, -18.4776 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@3",
-"Position": Vector2( 83.7624, -69.2417 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@4",
-"Position": Vector2( -85.6505, -24.4482 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@5",
-"Position": Vector2( 79.7775, 50.6066 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@6",
-"Position": Vector2( 21.4058, 7.89951 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@7",
-"Position": Vector2( 49.8148, -22.6647 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@8",
-"Position": Vector2( 60.1854, -74.1968 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@9",
-"Position": Vector2( -11.8512, 12.2252 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@10",
-"Position": Vector2( -94.4578, -72.4326 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@11",
-"Position": Vector2( 75.7116, -30.4409 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@12",
+"ID": 66,
 "Position": Vector2( -55.3057, 75.8975 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@13",
-"Position": Vector2( -38.4454, 0.146576 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@14",
-"Position": Vector2( -4.01792, -56.9925 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@15",
-"Position": Vector2( -35.6775, -8.23444 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@16",
-"Position": Vector2( 38.465, -49.9611 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@17",
-"Position": Vector2( -21.7518, -9.51946 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@18",
-"Position": Vector2( -75.1321, 81.3506 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@19",
-"Position": Vector2( -10.2284, -92.3233 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@20",
-"Position": Vector2( 98.1815, -43.6254 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@21",
-"Position": Vector2( 43.6438, -43.4026 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@22",
-"Position": Vector2( -62.9904, -16.9339 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@23",
-"Position": Vector2( -2.62099, -62.2476 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@24",
-"Position": Vector2( -17.3348, 2.30546 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@25",
-"Position": Vector2( -76.9853, -34.9729 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@26",
-"Position": Vector2( -30.5433, 85.2853 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@27",
-"Position": Vector2( -2.8291, -97.8471 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@28",
-"Position": Vector2( -49.8856, 5.83792 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@29",
-"Position": Vector2( 74.8626, -48.7844 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@30",
-"Position": Vector2( 73.6715, -70.8478 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@31",
-"Position": Vector2( -74.4566, 8.83077 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@32",
-"Position": Vector2( 32.4869, -22.7163 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@33",
-"Position": Vector2( -43.1722, 72.5739 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@34",
-"Position": Vector2( -43.0041, 58.1297 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@35",
-"Position": Vector2( -25.0298, 32.0714 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@36",
-"Position": Vector2( -78.0943, -9.99471 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@37",
-"Position": Vector2( 25.1433, -91.5052 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@38",
-"Position": Vector2( -46.2953, -11.2852 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@39",
-"Position": Vector2( -16.3978, 71.4456 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@40",
-"Position": Vector2( -56.6235, -74.5165 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@41",
-"Position": Vector2( -57.5679, -81.7106 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@42",
-"Position": Vector2( 22.332, -3.43105 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@43",
-"Position": Vector2( -83.965, 7.25238 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@44",
-"Position": Vector2( -84.6623, -17.4765 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@45",
-"Position": Vector2( 79.0596, -45.2505 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@46",
-"Position": Vector2( -81.4704, 33.4078 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@47",
-"Position": Vector2( 55.5485, -17.3579 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@48",
-"Position": Vector2( -98.2844, 68.7058 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@49",
-"Position": Vector2( 94.5741, -70.6152 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@50",
-"Position": Vector2( -59.8609, -32.9792 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@51",
-"Position": Vector2( -70.045, -91.5159 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@52",
-"Position": Vector2( -26.6085, 89.8117 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@53",
-"Position": Vector2( 39.9283, 31.5238 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@54",
-"Position": Vector2( -64.1145, 70.554 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@55",
-"Position": Vector2( -17.6779, -59.4569 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@56",
-"Position": Vector2( 41.142, -4.65983 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@57",
-"Position": Vector2( -51.0272, 9.53304 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@58",
-"Position": Vector2( 45.2493, 58.5083 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@59",
-"Position": Vector2( -96.1043, -45.4345 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@60",
-"Position": Vector2( -26.998, 2.51166 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@61",
-"Position": Vector2( -61.8361, 26.1401 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@62",
-"Position": Vector2( 33.341, -24.6084 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@63",
-"Position": Vector2( -4.9822, -98.2906 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@64",
-"Position": Vector2( -44.6774, 8.58239 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@65",
-"Position": Vector2( 91.0841, 18.2481 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@66",
-"Position": Vector2( 30.3289, -25.099 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@67",
-"Position": Vector2( 69.7601, -56.4292 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@68",
-"Position": Vector2( -52.4585, -0.685196 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@69",
-"Position": Vector2( 17.3585, 98.0288 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@70",
-"Position": Vector2( -92.9348, -98.4698 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@71",
-"Position": Vector2( 41.7309, 8.18003 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@72",
-"Position": Vector2( 71.5149, -77.7169 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@73",
-"Position": Vector2( 69.0981, -61.4564 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@74",
-"Position": Vector2( 98.6196, 84.1144 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@75",
-"Position": Vector2( -19.3557, -23.2723 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@76",
-"Position": Vector2( 14.9511, 62.1382 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@77",
-"Position": Vector2( 13.5265, -56.628 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@78",
-"Position": Vector2( 90.9964, -77.4373 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@79",
-"Position": Vector2( 41.5578, -61.4679 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@80",
-"Position": Vector2( -22.055, 28.7945 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@81",
-"Position": Vector2( 1.05782, -50.233 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@82",
-"Position": Vector2( 19.381, 25.6098 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@83",
-"Position": Vector2( -75.9239, 42.7866 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@84",
-"Position": Vector2( -83.8537, -12.9852 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@85",
-"Position": Vector2( -12.2332, 81.2285 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@86",
-"Position": Vector2( -29.1938, 67.4078 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@87",
-"Position": Vector2( -16.1921, 12.0779 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@88",
-"Position": Vector2( 41.2478, 25.4752 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@89",
-"Position": Vector2( -86.941, -88.6878 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@90",
-"Position": Vector2( 88.0372, -75.0188 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@91",
-"Position": Vector2( 44.428, -65.5512 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@92",
-"Position": Vector2( 48.0884, 10.4283 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@93",
-"Position": Vector2( -0.200851, -23.7194 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@94",
-"Position": Vector2( 33.9083, -48.8368 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@95",
-"Position": Vector2( 51.4371, -75.6647 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@96",
-"Position": Vector2( 41.8601, -40.9317 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@97",
-"Position": Vector2( 71.33, -27.8984 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@98",
-"Position": Vector2( 61.0737, -84.9112 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@99",
-"Position": Vector2( 46.3427, 34.6103 )
-}, {
-"AnimPosition": 0.604983,
-"Animation": "spinning",
-"Name": "@Coin@100",
-"Position": Vector2( -32.7562, -18.0681 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@111",
-"Position": Vector2( 24.2449, 95.7949 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@112",
-"Position": Vector2( -26.5422, -18.4776 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@113",
-"Position": Vector2( 83.7624, -69.2417 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@114",
-"Position": Vector2( -85.6505, -24.4482 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@115",
-"Position": Vector2( 79.7775, 50.6066 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@116",
-"Position": Vector2( 21.4058, 7.89951 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@117",
-"Position": Vector2( 49.8148, -22.6647 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@118",
-"Position": Vector2( 60.1854, -74.1968 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@119",
-"Position": Vector2( -11.8512, 12.2252 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@120",
-"Position": Vector2( -94.4578, -72.4326 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@121",
-"Position": Vector2( 75.7116, -30.4409 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@122",
-"Position": Vector2( -55.3057, 75.8975 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@123",
-"Position": Vector2( -38.4454, 0.146576 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@124",
-"Position": Vector2( -4.01792, -56.9925 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@125",
-"Position": Vector2( -35.6775, -8.23444 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@126",
-"Position": Vector2( 38.465, -49.9611 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@127",
-"Position": Vector2( -21.7518, -9.51946 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@128",
-"Position": Vector2( -75.1321, 81.3506 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@129",
-"Position": Vector2( -10.2284, -92.3233 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@130",
-"Position": Vector2( 98.1815, -43.6254 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@131",
-"Position": Vector2( 43.6438, -43.4026 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@132",
-"Position": Vector2( -62.9904, -16.9339 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@133",
-"Position": Vector2( -2.62099, -62.2476 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@134",
-"Position": Vector2( -17.3348, 2.30546 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@135",
-"Position": Vector2( -76.9853, -34.9729 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@136",
-"Position": Vector2( -30.5433, 85.2853 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@137",
-"Position": Vector2( -2.8291, -97.8471 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@138",
-"Position": Vector2( -49.8856, 5.83792 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@139",
-"Position": Vector2( 74.8626, -48.7844 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@140",
-"Position": Vector2( 73.6715, -70.8478 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@141",
-"Position": Vector2( -74.4566, 8.83077 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@142",
-"Position": Vector2( 32.4869, -22.7163 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@143",
-"Position": Vector2( -43.1722, 72.5739 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@144",
-"Position": Vector2( -43.0041, 58.1297 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@145",
-"Position": Vector2( -25.0298, 32.0714 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@146",
-"Position": Vector2( -78.0943, -9.99471 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@147",
-"Position": Vector2( 25.1433, -91.5052 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@148",
-"Position": Vector2( -46.2953, -11.2852 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@149",
-"Position": Vector2( -16.3978, 71.4456 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@150",
-"Position": Vector2( -56.6235, -74.5165 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@151",
-"Position": Vector2( -57.5679, -81.7106 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@152",
-"Position": Vector2( 22.332, -3.43105 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@153",
-"Position": Vector2( -83.965, 7.25238 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@154",
-"Position": Vector2( -84.6623, -17.4765 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@155",
-"Position": Vector2( 79.0596, -45.2505 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@156",
-"Position": Vector2( -81.4704, 33.4078 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@157",
-"Position": Vector2( 55.5485, -17.3579 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@158",
-"Position": Vector2( -98.2844, 68.7058 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@159",
-"Position": Vector2( 94.5741, -70.6152 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@160",
-"Position": Vector2( -59.8609, -32.9792 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@161",
-"Position": Vector2( -70.045, -91.5159 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@162",
-"Position": Vector2( -26.6085, 89.8117 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@163",
-"Position": Vector2( 39.9283, 31.5238 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@164",
-"Position": Vector2( -64.1145, 70.554 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@165",
-"Position": Vector2( -17.6779, -59.4569 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@166",
-"Position": Vector2( 41.142, -4.65983 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@167",
-"Position": Vector2( -51.0272, 9.53304 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@168",
-"Position": Vector2( 45.2493, 58.5083 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@169",
-"Position": Vector2( -96.1043, -45.4345 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@170",
-"Position": Vector2( -26.998, 2.51166 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@171",
-"Position": Vector2( -61.8361, 26.1401 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@172",
-"Position": Vector2( 33.341, -24.6084 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@173",
-"Position": Vector2( -4.9822, -98.2906 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@174",
-"Position": Vector2( -44.6774, 8.58239 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@175",
-"Position": Vector2( 91.0841, 18.2481 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@176",
-"Position": Vector2( 30.3289, -25.099 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@177",
-"Position": Vector2( 69.7601, -56.4292 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@178",
-"Position": Vector2( -52.4585, -0.685196 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@179",
-"Position": Vector2( 17.3585, 98.0288 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@180",
-"Position": Vector2( -92.9348, -98.4698 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@181",
-"Position": Vector2( 41.7309, 8.18003 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@182",
-"Position": Vector2( 71.5149, -77.7169 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@183",
-"Position": Vector2( 69.0981, -61.4564 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@184",
-"Position": Vector2( 98.6196, 84.1144 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@185",
-"Position": Vector2( -19.3557, -23.2723 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@186",
-"Position": Vector2( 14.9511, 62.1382 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@187",
-"Position": Vector2( 13.5265, -56.628 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@188",
-"Position": Vector2( 90.9964, -77.4373 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@189",
-"Position": Vector2( 41.5578, -61.4679 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@190",
-"Position": Vector2( -22.055, 28.7945 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@191",
-"Position": Vector2( 1.05782, -50.233 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@192",
-"Position": Vector2( 19.381, 25.6098 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@193",
-"Position": Vector2( -75.9239, 42.7866 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@194",
-"Position": Vector2( -83.8537, -12.9852 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@195",
-"Position": Vector2( -12.2332, 81.2285 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@196",
-"Position": Vector2( -29.1938, 67.4078 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@197",
-"Position": Vector2( -16.1921, 12.0779 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@198",
-"Position": Vector2( 41.2478, 25.4752 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@199",
-"Position": Vector2( -86.941, -88.6878 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@200",
-"Position": Vector2( 88.0372, -75.0188 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@201",
-"Position": Vector2( 44.428, -65.5512 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@202",
-"Position": Vector2( 48.0884, 10.4283 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@203",
-"Position": Vector2( -0.200851, -23.7194 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@204",
-"Position": Vector2( 33.9083, -48.8368 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@205",
-"Position": Vector2( 51.4371, -75.6647 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@206",
-"Position": Vector2( 41.8601, -40.9317 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@207",
-"Position": Vector2( 71.33, -27.8984 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@208",
-"Position": Vector2( 61.0737, -84.9112 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@209",
-"Position": Vector2( 46.3427, 34.6103 )
-}, {
-"AnimPosition": 0.125818,
-"Animation": "spinning",
-"Name": "@Coin@210",
-"Position": Vector2( -32.7562, -18.0681 )
 } ]
-}
 } ]
 enemyDict = {
-"Children": 14,
+"Children": 24,
 "Enemies": [ {
-"AnimPosition": 0.00950468,
+"AnimPosition": 0.331627,
 "Animation": "walk",
 "Group": null,
-"Name": "Enemy",
-"Position": Vector2( 373.284, 570.92 ),
+"ID": 41,
+"Position": Vector2( 354.375, 570.872 ),
+"Velocity": Vector2( 75, 15 )
+}, {
+"AnimPosition": 0.331627,
+"Animation": "walk",
+"Group": null,
+"ID": 42,
+"Position": Vector2( 557.278, 78.3878 ),
+"Velocity": Vector2( 75, 51.5131 )
+}, {
+"AnimPosition": 0.331627,
+"Animation": "walk",
+"Group": null,
+"ID": 43,
+"Position": Vector2( 839.607, 90.9201 ),
+"Velocity": Vector2( 75, 15 )
+}, {
+"AnimPosition": 0.331627,
+"Animation": "walk",
+"Group": null,
+"ID": 44,
+"Position": Vector2( 735.43, 90.8724 ),
 "Velocity": Vector2( -75, 15 )
 }, {
-"AnimPosition": 0.00950468,
+"AnimPosition": 0.503007,
 "Animation": "walk",
-"Group": null,
-"Name": "Enemy2",
-"Position": Vector2( 301.22, 58.9201 ),
+"Coin": {
+"AnimPosition": 0.0295062,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2224,
+"ID": 47,
+"Position": Vector2( 73.4578, 26.9201 ),
+"Velocity": Vector2( 75, 15 )
+}, {
+"AnimPosition": 0.503007,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 0.0295062,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2224,
+"ID": 49,
+"Position": Vector2( 98.7612, 26.9044 ),
 "Velocity": Vector2( -75, 15 )
 }, {
-"AnimPosition": 0.00950468,
-"Animation": "walk",
-"Group": null,
-"Name": "Enemy3",
-"Position": Vector2( 530.517, 68.2513 ),
-"Velocity": Vector2( 75, 23.6746 )
-}, {
-"AnimPosition": 0.00950468,
-"Animation": "walk",
-"Group": null,
-"Name": "Enemy4",
-"Position": Vector2( 730.865, 90.9201 ),
-"Velocity": Vector2( 75, 15 )
-}, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@211",
-"Position": Vector2( 104.215, 218.92 ),
+"Group": 2224,
+"ID": 51,
+"Position": Vector2( 14.3499, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@212",
-"Position": Vector2( 53.4588, 26.9201 ),
+"Group": 2224,
+"ID": 53,
+"Position": Vector2( 102.274, 154.92 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@213",
-"Position": Vector2( 118.763, 26.9201 ),
+"Group": 2224,
+"ID": 55,
+"Position": Vector2( 121.408, 26.9201 ),
+"Velocity": Vector2( 75, 15 )
+}, {
+"AnimPosition": 0.503007,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 0.0295062,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2224,
+"ID": 57,
+"Position": Vector2( 132.313, 26.9201 ),
 "Velocity": Vector2( -75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@214",
-"Position": Vector2( -5.64911, 26.9201 ),
+"Group": 2224,
+"ID": 59,
+"Position": Vector2( 122.69, 26.9201 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.503007,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 0.0295062,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2224,
+"ID": 61,
+"Position": Vector2( 88.1516, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@215",
-"Position": Vector2( 99.7759, 154.872 ),
+"Group": 2224,
+"ID": 63,
+"Position": Vector2( 5.54295, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.503007,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 0.0295062,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@216",
-"Position": Vector2( 101.406, 26.9201 ),
+"Group": 2224,
+"ID": 65,
+"Position": Vector2( 105.709, 26.9201 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 68,
+"Position": Vector2( 109.055, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.299997,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 1.22499,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@217",
-"Position": Vector2( 129.814, 26.8724 ),
+"Group": 2761,
+"ID": 70,
+"Position": Vector2( 138.483, 26.9201 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 72,
+"Position": Vector2( 111.823, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.299997,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 1.22499,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@218",
-"Position": Vector2( 140.187, 26.9201 ),
+"Group": 2761,
+"ID": 74,
+"Position": Vector2( 95.9656, 26.8724 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 76,
+"Position": Vector2( 125.749, 26.8723 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.299997,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 1.22499,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@219",
-"Position": Vector2( 68.149, 26.9041 ),
+"Group": 2761,
+"ID": 78,
+"Position": Vector2( -20.1321, 308.266 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 80,
+"Position": Vector2( 137.272, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 }, {
-"AnimPosition": 1.06721,
+"AnimPosition": 0.299997,
 "Animation": "walk",
 "Coin": {
-"AnimPosition": 0.125818,
+"AnimPosition": 1.22499,
 "Animation": "spinning",
 "Name": "Coin",
 "Position": Vector2( 0, -25 )
 },
-"Group": 4166,
-"Name": "@Enemy@220",
-"Position": Vector2( -14.4575, 26.9201 ),
+"Group": 2761,
+"ID": 82,
+"Position": Vector2( 35.6831, 26.92 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 84,
+"Position": Vector2( 91.1422, 26.9142 ),
+"Velocity": Vector2( -75, 15 )
+}, {
+"AnimPosition": 0.299997,
+"Animation": "walk",
+"Coin": {
+"AnimPosition": 1.22499,
+"Animation": "spinning",
+"Name": "Coin",
+"Position": Vector2( 0, -25 )
+},
+"Group": 2761,
+"ID": 86,
+"Position": Vector2( 84.509, 26.9201 ),
 "Velocity": Vector2( 75, 15 )
 } ]
 }
 platformDict = [ {
-"Position": 3.01666
+"Position": 3.08332
 }, {
-"Position": 7.01675
+"Position": 3.08343
 } ]
 musicDict = {
 "Name": "Music",
-"Position": 14.913
+"Position": 18.9997
 }
 gameScores = {
 "HighScore": {
-"Coins": 17,
-"Enemies": 10
+"Coins": 4,
+"Enemies": 0
 },
 "Session": {
-"Coins": 17,
-"Enemies": 10
+"Coins": 4,
+"Enemies": 0
 }
 }

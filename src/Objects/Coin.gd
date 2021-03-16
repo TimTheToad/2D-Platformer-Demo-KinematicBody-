@@ -5,7 +5,7 @@ extends Area2D
 onready var animation_player = $AnimationPlayer
 
 var enemy = null
-
+var ID = -1
 # The Coins only detects collisions with the Player thanks to its collision mask.
 # This prevents other characters such as enemies from picking up coins.
 
@@ -13,6 +13,11 @@ var enemy = null
 # The animation takes cares of making the coin disappear, but also deactivates its
 # collisions and frees it from memory, saving us from writing more complex code.
 # Click the AnimationPlayer node to see the animation timeline.
+
+func _ready():
+	ID = Statistics.CreateID()
+	pass
+
 func _on_body_entered(_body):
 	pickup()
 	if(enemy != null):
