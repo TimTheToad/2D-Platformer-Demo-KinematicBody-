@@ -25,7 +25,6 @@ func _ready():
 	TichProfiler.connect("_save", self, "SaveData")
 	TichProfiler.connect("_load", self, "LoadData")
 	TichProfiler.connect("_change_level", self, "ChangeLevel")
-#
 
 	pass
 
@@ -193,10 +192,10 @@ func SaveData():
 		var enemyDictionary = {
 			"Position": enemy.position, 
 			"Velocity": enemy._velocity, 
-			"Name" : enemy.name, 
+			"Name" : enemy.name.replace("@", ""), 
 			"AnimPosition" : animPlayer.current_animation_position,
 			"Animation" : animPlayer.current_animation,
-			"Group" : enemy.group.get_instance_id() if enemy.group else enemy.group
+			"Group" : enemy.group.get_instance_id() if enemy.group else null
 			}
 			#----------Save Enemy Coin Data--------------#
 		var enemyCoin = enemy.get_node_or_null("Coin")
@@ -252,10 +251,10 @@ func LoadData():
 	var enemyInGameArr = parent.get_children()
 	var enemyInLoadArr = loadGameData.enemyDict["Enemies"]
 	
-	var inGameNames = []
+	var inGameEnemyName = []
 	
 	for i in range(0, enemyInGameArr.size()):
-		inGameNames.append(enemyInGameArr[i].name)
+		inGameEnemyName.append(enemyInGameArr[i].name)
 
 	var groupDict = {}
 	
@@ -264,7 +263,7 @@ func LoadData():
 			groupDict[enemy.group.get_instance_id()] = enemy.group
 	
 	for j in range(enemyInLoadArr.size()):
-		var index = inGameNames.find(enemyInLoadArr[j]["Name"])
+		var index = inGameEnemyName.find(enemyInLoadArr[j]["Name"])
 		
 		if index == -1:
 			var groupID = enemyInLoadArr[j]["Group"]
