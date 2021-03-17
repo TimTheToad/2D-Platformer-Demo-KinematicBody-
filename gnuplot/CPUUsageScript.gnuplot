@@ -14,7 +14,8 @@ gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
 
-set ytics auto
+set ytics auto nomirror
+set xtics nomirror
 set ylabel "CPU Utilization (%)"
 set xlabel "Frame"
 

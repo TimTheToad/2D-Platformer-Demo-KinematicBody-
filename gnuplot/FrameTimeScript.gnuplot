@@ -13,17 +13,16 @@ gaSaveData = "../data/ga_save_".fileEnd
 gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
-set yrange[0:70000]
-set ytics auto
-set xtics auto
-set ylabel "Frame Time (µs)"
+set ytics auto nomirror
+set xtics auto nomirror
+set ylabel "Frame Time (ms)"
 set xlabel "Frame"
 
 set bmargin 5
 set style fill solid 0.3
 
-plot gsSaveData using 1 title 'Gs', gaSaveData using 1 title 'Ga'
+plot gsSaveData using ($1/1000.0) title 'Gs', gaSaveData using ($1/1000.0) title 'Ga'
 
 set title "Load Data Frame Time With Complexity ".(ARG1+1) 
-plot gsLoadData using 1 title 'Gs', gaLoadData using 1 title 'Ga'
+plot gsLoadData using ($1/1000.0) title 'Gs', gaLoadData using ($1/1000.0) title 'Ga'
 unset multiplot

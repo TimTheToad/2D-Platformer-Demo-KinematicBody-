@@ -14,17 +14,18 @@ gaLoadData = "../data/ga_load_".fileEnd
 
 set grid y
 
-set ytics auto
-set ylabel "RAM Utilization (Bytes)"
+set ytics auto nomirror
+set xtics nomirror
+set ylabel "RAM Utilization (KB)"
 set xlabel "Frame"
 set key outside
 set bmargin 5
 set style fill solid 0.3
 
-plot gsSaveData using 4 title 'Gs', gaSaveData using 4 title 'Ga'
+plot gsSaveData using ($4/1000.0) title 'Gs', gaSaveData using ($4/1000.0) title 'Ga'
 
 set title "Load State RAM Utilization With Complexity ".(ARG1+1)
 
-plot gsLoadData using 4 title 'Gs', gaLoadData using 4 title 'Ga'
+plot gsLoadData using ($4/1000.0) title 'Gs', gaLoadData using ($4/1000.0) title 'Ga'
 
 unset multiplot

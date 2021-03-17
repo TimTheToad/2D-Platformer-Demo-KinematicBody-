@@ -28,6 +28,8 @@ set key outside
 set bmargin 5
 set style fill solid 0.3
 
+set xtics nomirror
+set ytics nomirror
 
 set offsets graph 0, 0, 100, 2
 

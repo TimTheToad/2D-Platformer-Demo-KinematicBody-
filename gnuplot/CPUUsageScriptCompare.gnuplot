@@ -21,7 +21,8 @@ gaLoadData2 = "../data/ga_load_2.csv"
 
 set grid y
 
-set ytics auto
+set ytics auto nomirror
+set xtics nomirror
 set ylabel "CPU Utilization (%)"
 set xlabel "Frame"
 set key outside
