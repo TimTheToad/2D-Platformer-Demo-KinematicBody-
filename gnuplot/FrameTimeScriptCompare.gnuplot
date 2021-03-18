@@ -1,5 +1,5 @@
 reset
-
+unset terminal
 set multiplot layout 2,2
 set datafile separator ';'
 set style data lines
@@ -30,15 +30,22 @@ set bmargin 5
 set style fill solid 0.3
 
 set title "Save State Frame Time Gs"
-plot gsSaveData0 using ($1/1000.0) title '1', gsSaveData1 using ($1/1000.0) title '2', gsSaveData2 using ($1/1000.0) title '3'
+unset key
+plot gsSaveData0 using ($1/1000.0) title '1' lc rgb "black", gsSaveData1 using ($1/1000.0) title '2' lc rgb "orange", gsSaveData2 using ($1/1000.0) title '3' lc rgb "purple"
+
+set key; unset tics; unset border; unset xlabel; unset ylabel
+
+plot [][0:1] 2 title 'Carrefour' lw 4, \
+     2 title 'Philips' lw 4, \
+     2 title 'Sony' lw 4
 
 set title "Save State Frame Time Ga"
-plot gaSaveData0 using ($1/1000.0) title '1', gaSaveData1 using ($1/1000.0) title '2', gaSaveData2 using ($1/1000.0) title '3'
+plot gaSaveData0 using ($1/1000.0) title '1' lc rgb "black", gaSaveData1 using ($1/1000.0) title '2' lc rgb "orange", gaSaveData2 using ($1/1000.0) title '3' lc rgb "purple"
 
 set title "Load State Frame Time Gs"
-plot gsLoadData0 using ($1/1000.0) title '1', gsLoadData1 using ($1/1000.0) title '2', gsLoadData2 using ($1/1000.0) title '3'
+plot gsLoadData0 using ($1/1000.0) title '1' lc rgb "black", gsLoadData1 using ($1/1000.0) title '2' lc rgb "orange", gsLoadData2 using ($1/1000.0) title '3' lc rgb "purple"
 
 set title "Load State Frame Time Ga"
-plot gaLoadData0 using ($1/1000.0) title '1', gaLoadData1 using ($1/1000.0) title '2', gaLoadData2 using ($1/1000.0) title '3'
+plot gaLoadData0 using ($1/1000.0) title '1' lc rgb "black", gaLoadData1 using ($1/1000.0) title '2' lc rgb "orange", gaLoadData2 using ($1/1000.0) title '3' lc rgb "purple"
 
 unset multiplot
