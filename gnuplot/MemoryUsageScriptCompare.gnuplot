@@ -32,15 +32,15 @@ set bmargin 5
 set style fill solid 0.3
 
 set title "Save State RAM Utilization Gs"
-plot gsSaveData0 using ($4/1000.0) title '1', gsSaveData1 using ($4/1000.0) title '2', gsSaveData2 using ($4/1000.0) title '3'
+plot gsSaveData0 using ($4/1000.0) notitle lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsSaveData1 using ($4/1000.0) notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsSaveData2 using ($4/1000.0) notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Save State RAM Utilization Ga"
-plot gaSaveData0 using ($4/1000.0) title '1', gaSaveData1 using ($4/1000.0) title '2', gaSaveData2 using ($4/1000.0) title '3'
+plot gaSaveData0 using ($4/1000.0) notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaSaveData1 using ($4/1000.0) notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaSaveData2 using ($4/1000.0) notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Load State RAM Utilization Gs"
-plot gsLoadData0 using ($4/1000.0) title '1', gsLoadData1 using ($4/1000.0) title '2', gsLoadData2 using ($4/1000.0) title '3'
+plot gsLoadData0 using ($4/1000.0) notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsLoadData1 using ($4/1000.0) notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsLoadData2 using ($4/1000.0) notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Load State RAM Utilization Ga"
-plot gaLoadData0 using ($4/1000.0) title '1', gaLoadData1 using ($4/1000.0) title '2', gaLoadData2 using ($4/1000.0) title '3'
+plot gaLoadData0 using ($4/1000.0) notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaLoadData1 using ($4/1000.0) notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaLoadData2 using ($4/1000.0) notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 unset multiplot

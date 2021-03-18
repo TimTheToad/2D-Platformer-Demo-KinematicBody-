@@ -18,12 +18,11 @@ set ylabel "Size (Bytes)"
 set xlabel "Implementation Model"
 
 set bmargin 5
-set style fill solid 0.3
 
 set title "State Data Comparison"
-plot "../data/StateSizeAndNodeCount.csv" using 2 title 'Complexity 1', "" using 3 title 'Complexity 2', "" using 4 title 'Complexity 3'
+plot "../data/StateSizeAndNodeCount.csv" using 2 lc rgb "black" title 'Complexity 1', "" using 3 lc rgb "orange" title 'Complexity 2', "" using 4 lc rgb "purple" title 'Complexity 3'
 
 set title "Node Count Comparison"
-plot "../data/StateSizeAndNodeCount.csv" using 5 title 'Complexity 1', "" using 6 title 'Complexity 2', "" using 7 title 'Complexity 3'
+plot "../data/StateSizeAndNodeCount.csv" using 5 lc rgb "black" title 'Complexity 1', "" using 6 lc rgb "orange" title 'Complexity 2', "" using 7 lc rgb "purple" title 'Complexity 3'
 
 unset multiplot

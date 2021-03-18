@@ -34,16 +34,16 @@ set ytics nomirror
 set offsets graph 0, 0, 100, 2
 
 set title "Save State Objects Gs"
-plot gsSaveData0 using 7 title '1', gsSaveData1 using 7 title '2', gsSaveData2 using 7 title '3'
+plot gsSaveData0 using 7 notitle lc rgb "black",0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsSaveData1 using 7 notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsSaveData2 using 7 notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Save State Objects Ga"
-plot gaSaveData0 using 7 title '1', gaSaveData1 using 7 title '2', gaSaveData2 using 7 title '3'
+plot gaSaveData0 using 7 notitle lc rgb "black",0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaSaveData1 using 7 notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaSaveData2 using 7 notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Load State Objects Gs"
-plot gsLoadData0 using 7 title '1', gsLoadData1 using 7 title '2', gsLoadData2 using 7 title '3'
+plot gsLoadData0 using 7 notitle lc rgb "black",0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsLoadData1 using 7 notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsLoadData2 using 7 notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 unset offsets
 set title "Load State Objects Ga"
-plot gaLoadData0 using 7 title '1', gaLoadData1 using 7 title '2', gaLoadData2 using 7 title '3'
+plot gaLoadData0 using 7 notitle lc rgb "black",0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaLoadData1 using 7 notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaLoadData2 using 7 notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 unset multiplot

@@ -32,15 +32,15 @@ set bmargin 5
 set style fill solid 0.3
 
 set title "Save State CPU Utilization Gs"
-plot gsSaveData0 using 3 title '1', gsSaveData1 using 3 title '2', gsSaveData2 using 3 title '3'
+plot gsSaveData0 using 3 notitle lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsSaveData1 using 3 notitle lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsSaveData2 using 3 notitle lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Save State CPU Utilization Ga"
-plot gaSaveData0 using 3 title '1', gaSaveData1 using 3 title '2', gaSaveData2 using 3 title '3'
+plot gaSaveData0 using 3 notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaSaveData1 using 3 notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaSaveData2 using 3 notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Load State CPU Utilization Gs"
-plot gsLoadData0 using 3 title '1', gsLoadData1 using 3 title '2', gsLoadData2 using 3 title '3'
+plot gsLoadData0 using 3 notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gsLoadData1 using 3 notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gsLoadData2 using 3 notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 set title "Load State CPU Utilization Ga"
-plot gaLoadData0 using 3 title '1', gaLoadData1 using 3 title '2', gaLoadData2 using 3 title '3'
+plot gaLoadData0 using 3 notitle '1' lc rgb "black", 0/0 linetype 2 linewidth 3 lc rgb "black" title '1', gaLoadData1 using 3 notitle '2' lc rgb "orange", 0/0 linetype 2 linewidth 3 lc rgb "orange" title '2', gaLoadData2 using 3 notitle '3' lc rgb "purple", 0/0 linetype 2 linewidth 3 lc rgb "purple" title '3'
 
 unset multiplot
